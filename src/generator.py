@@ -4,40 +4,30 @@ from scipy.io import wavfile
 
 class AudioGenerator:
     @staticmethod
-    def create_melody(base_freq, filename, duration_seconds=10, sample_rate=44100):
+    def create_percussion(base_freq, filename, duration_seconds=5, sample_rate=44100):
         """
-        Genera una melodía (arpegio + armónicos) para crear texturas sonoras orgánicas.
+        Generates a dense and punchy sub-bass percussion pulse of 5 seconds,
+        simulating a tight and heavy heartbeat-like pulse.
         """
         os.makedirs('output/raw', exist_ok=True)
         
-        t = np.linspace(0, duration_seconds, int(sample_rate * duration_seconds), endpoint=False)
+        num_samples = int(sample_rate * duration_seconds)
+        t = np.linspace(0, duration_seconds, num_samples, endpoint=False)
         
-        # Progresión armónica: fundamental, quinta justa y octava
-        harmonics = [base_freq, base_freq * 1.5, base_freq * 2]
+        # Sub-bass synthesis for a deep punch
+        base_sub = base_freq * 0.25
+        mod = np.sin(2 * np.pi * 5 * t)
+        wave = np.sin(2 * np.pi * base_sub * t + mod * 15.0)
         
-        wave = np.zeros_like(t)
-        for i, f in enumerate(harmonics):
-            weight = 0.4 / (i + 1)
-            wave += weight * np.sin(2 * np.pi * f * t)
-            
-        # Modulación de amplitud lenta para dar sensación de pulso / respiración
-        modulator = 0.5 + 0.5 * np.sin(2 * np.pi * 0.2 * t) 
-        wave = wave * modulator
-        
-        # Envolvente de entrada y salida (fade) para evitar clics
-        fade_duration = 1.5
-        fade_samples = int(sample_rate * fade_duration)
-        envelope = np.ones_like(wave)
-        envelope[:fade_samples] = np.linspace(0, 1, fade_samples)
-        envelope[-fade_samples:] = np.linspace(1, 0, fade_samples)
-        
+        # Envelope: adjusted to make the pulse much more dense (repetition every 0.5 seconds)
+        envelope = np.exp(-np.mod(t, 0.5) * 5.5)
         wave = wave * envelope
         
-        # Normalizar y limitar volumen (-3 dB de margen)
-        wave = 0.6 * (wave / np.max(np.abs(wave)))
+        # Normalize
+        wave = 0.8 * (wave / np.max(np.abs(wave)))
         wave_int = (wave * 32767).astype(np.int16)
         
         filepath = os.path.join('output/raw', filename)
         wavfile.write(filepath, sample_rate, wave_int)
-        print(f"Melodía generada en: {filepath}")
+        print(f"Percussive beat successfully generated at: {filepath}")
         return filepath
