@@ -32,35 +32,3 @@ To generate the complete set of harmonic frequencies for the ecosystem, run the 
    ```bash
    python main.py
 
-## 📁 File Structure
-
-   ```
-zenBeats/
-│
-├── config/
-│   └── frequencies.json      # Parameters and base frequencies (Hz)
-│
-├── src/
-│   ├── __init__.py
-│   ├── generator.py          # Harmonic generator and frequency modulator
-│   └── effects.py            # Envelopes and fade modules
-│
-├── output/
-│   └── raw/                  # Generated raw audio files
-│
-├── data/
-│
-├── .gitignore
-├── requirements.txt
-├── main.py
-└── README.md
-
-
-📐 Fractal Ecosystem and Frequencies
-Caer (396 Hz): Stability and fractal base.
-
-Levantarse (417 Hz): Resonance, energy, and dynamic modulation.
-
-Caminar (528 Hz): Steady pace, continuous rhythm, and repair.
-
-Saltar (639 Hz): Expansion and connection of the entire system.
