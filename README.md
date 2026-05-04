@@ -32,10 +32,6 @@ To generate the complete set of harmonic frequencies for the ecosystem, run the 
    ```bash
    python main.py
 
----
-
-
-
 ## 📁 File Structure
 
    ```
