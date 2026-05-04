@@ -28,6 +28,6 @@ class AudioGenerator:
         wave_int = (wave * 32767).astype(np.int16)
         
         filepath = os.path.join('output/raw', filename)
-        wavfile.write(filepath, sample_rate, wave_int)
+        wavfile.write(filepath, wave_int)
         print(f"Percussive beat successfully generated at: {filepath}")
         return filepath
