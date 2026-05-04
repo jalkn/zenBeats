@@ -1,0 +1,26 @@
+{
+  "caer": {
+    "name": "Caer",
+    "base_freq_hz": 396,
+    "description": "Frecuencia de liberación y estabilidad fractal",
+    "duration_seconds": 10
+  },
+  "levantarse": {
+    "name": "Levantarse",
+    "base_freq_hz": 417,
+    "description": "Frecuencia de resonancia y cambio energético",
+    "duration_seconds": 10
+  },
+  "caminar": {
+    "name": "Caminar",
+    "base_freq_hz": 528,
+    "description": "Frecuencia de reparación y ritmo constante",
+    "duration_seconds": 10
+  },
+  "saltar": {
+    "name": "Saltar",
+    "base_freq_hz": 639,
+    "description": "Frecuencia de conexión, expansión y disparador",
+    "duration_seconds": 10
+  }
+}
