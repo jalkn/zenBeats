@@ -45,11 +45,11 @@ class AudioGenerator:
         
         shape_text = shapes.get(action_type, "  [Shape not defined]")
         
-        # Guardar la representación en texto
+        # Write the 3D representation to file
         with open(filepath, "w", encoding="utf-8") as f:
             f.write(shape_text)
             
-        print(f"\n[Archivo de geometría 3D creado] Ruta: {filepath}")
+        print(f"\n[3D Geometry file created] Path: {filepath}")
         print(shape_text)
 
     @staticmethod
@@ -63,7 +63,6 @@ class AudioGenerator:
         num_samples = int(sample_rate * duration_seconds)
         t = np.linspace(0, duration_seconds, num_samples, endpoint=False)
         
-        # Síntesis de Sub-bass
         base_sub = base_freq * 0.25
         mod = np.sin(2 * np.pi * 5 * t)
         wave = np.sin(2 * np.pi * base_sub * t + mod * 15.0)
@@ -76,5 +75,5 @@ class AudioGenerator:
         
         filepath = os.path.join('output/raw', filename)
         wavfile.write(filepath, sample_rate, wave_int)
-        print(f"Secuencia percusiva generada en: {filepath}")
+        print(f"Percussive beat generated at: {filepath}")
         return filepath, filename
