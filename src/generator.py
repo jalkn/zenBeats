@@ -17,7 +17,7 @@ class AudioGenerator:
   [===]             [===]
   |   \\           /   |
   |    \\         /    |
-  |     \\_______/     | (Hourglass horizontally)
+  |     \\_______/     | (bio-Brick)
   |     /       \\     |
   |    /         \\    |
   |   /           \\   |
@@ -27,11 +27,11 @@ class AudioGenerator:
                     ^
                    / \\
                   / * \\
-                 /=====\\ (Pyramid arrow up)
+                 /=====\\ (bio-Pyramid)
             """,
             'caminar': """
                     |\\
-                    | \\ > (Pyramid arrow right)
+                    | \\ > (bio-Pyramid)
                     | / >
                     |/
             """,
@@ -39,7 +39,7 @@ class AudioGenerator:
                  \\=====/ 
                   \\ * /
                    \\ /
-                    V (Pyramid arrow down)
+                    V (bio-Pyramid)
             """
         }
         

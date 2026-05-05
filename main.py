@@ -39,10 +39,11 @@ def main():
     frequencies = load_frequencies()
     gen = AudioGenerator()
     
-    user_input = input("Por favor ingrese la secuencia de acciones (ej. saltar, levantarse, caminar, caer): ").strip()
+    # Pregunta actualizada en español
+    user_input = input("Por favor escribe la letra de la accion (ej. caer: F, levantarse: U, caminar: W, saltar: J): ").strip()
     
     sequence_elements = [x.strip() for x in user_input.replace(',', ' ').split() if x.strip()]
-    print(f"\nProcesando secuencia de Zenergia: {sequence_elements}")
+    print(f"\nProcesando acción de Zenergia: {sequence_elements}")
     
     for item in sequence_elements:
         try:
