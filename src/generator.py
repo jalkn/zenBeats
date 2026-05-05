@@ -6,7 +6,7 @@ class AudioGenerator:
     @staticmethod
     def print_3d_shape(action_type, action_code):
         """
-        Generates and saves a 3D/Text representation and an SVG element of the action.
+        Generates and saves a 3D structural text file and an SVG file.
         """
         os.makedirs('output/3d', exist_ok=True)
         os.makedirs('output/svg', exist_ok=True)
@@ -22,7 +22,7 @@ class AudioGenerator:
   [===]             [===]
   |   \\           /   |
   |    \\         /    |
-  |     \\_______/     | (Reloj de arena horizontal - Chlorella)
+  |     \\_______/     | (JBrick)
   |     /       \\     |
   |    /         \\    |
   |   /           \\   |
@@ -32,11 +32,11 @@ class AudioGenerator:
                     ^
                    / \\
                   / * \\
-                 /=====\\ (Pirámide hacia arriba)
+                 /=====\\ (UBrick)
             """,
             'caminar': """
                     |\\
-                    | \\ > (Flecha a la derecha)
+                    | \\ > (WBrick)
                     | / >
                     |/
             """,
@@ -44,20 +44,20 @@ class AudioGenerator:
                  \\=====/ 
                   \\ * /
                    \\ /
-                    V (Flecha hacia abajo)
+                    V (FBrick)
             """
         }
         
         shape_text = shapes.get(action_type, "  [Shape not defined]")
         
-        # Escribe la representación geométrica de texto
+        # Write the 3D representation to file
         with open(filepath_txt, "w", encoding="utf-8") as f:
             f.write(shape_text)
             
         print(f"\n[Archivo de geometría 3D creado] Ruta: {filepath_txt}")
         print(shape_text)
 
-        # SVG 3D para el modelo de césped
+        # SVG 3D Definition for Chlorella ground application
         svg_content = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
   <defs>
     <linearGradient id="chlorellaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -72,7 +72,7 @@ class AudioGenerator:
   <rect width="100%" height="100%" fill="#1a1a1a"/>
   <circle cx="250" cy="250" r="200" fill="url(#chlorellaGrad)" filter="url(#glow)"/>
   <text x="250" y="260" font-family="monospace" font-size="20" fill="#ffffff" text-anchor="middle">
-    {action_type.upper()}
+    {action_type.upper()} BRICK
   </text>
 </svg>'''
 

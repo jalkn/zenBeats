@@ -2,7 +2,7 @@
   [===]             [===]
   |   \           /   |
   |    \         /    |
-  |     \_______/     | (Reloj de arena horizontal - Chlorella)
+  |     \_______/     | (JBrick)
   |     /       \     |
   |    /         \    |
   |   /           \   |

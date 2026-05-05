@@ -1,6 +1,6 @@
 
                     |\
-                    | \ > (Flecha a la derecha)
+                    | \ > 
                     | / >
                     |/
             
