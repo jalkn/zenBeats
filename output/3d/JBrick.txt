@@ -2,7 +2,7 @@
   [===]             [===]
   |   \           /   |
   |    \         /    |
-  |     \_______/     | (Hourglass horizontally)
+  |     \_______/     | (Reloj de arena horizontal - Chlorella)
   |     /       \     |
   |    /         \    |
   |   /           \   |

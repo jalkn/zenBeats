@@ -39,7 +39,7 @@ def main():
     frequencies = load_frequencies()
     gen = AudioGenerator()
     
-    user_input = input("Por favor escribe la letra de la accion (ej. caer: F, levantarse: U, caminar: W, saltar: J): ").strip()
+    user_input = input("Por favor escribe la letra de la acción (ej. caer: F, levantarse: U, caminar: W, saltar: J): ").strip()
     
     sequence_elements = [x.strip() for x in user_input.replace(',', ' ').split() if x.strip()]
     print(f"\nProcesando secuencia de Zenergia: {sequence_elements}")
@@ -49,10 +49,8 @@ def main():
             f_data, action_key = get_action_data(item, frequencies)
             action_code = f_data['action']
             
-            # Print 3D structure and save
             gen.print_3d_shape(action_key, action_code)
             
-            # Generate the beat using the new convention, eg. "Jbeat.wav"
             _, filename = gen.create_percussion(f_data['base_freq_hz'], action_code, duration_seconds=10)
             
             base_path = f"output/raw/{filename}"
