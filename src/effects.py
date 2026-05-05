@@ -7,7 +7,7 @@ def mix_fractal_audio(base_audio_path, ambient_audio_path, output_filename, volu
     Mixes a generated beat with an ambient environmental sound (e.g., Santa Elena forest).
     """
     if not os.path.exists(base_audio_path) or not os.path.exists(ambient_audio_path):
-        print("Error: Audio files do not exist. Please generate the beat first.")
+        print("Error: Los archivos de audio no existen. Por favor genere el beat primero.")
         return
     
     # Read the audio files
@@ -29,7 +29,7 @@ def mix_fractal_audio(base_audio_path, ambient_audio_path, output_filename, volu
     output_path = f"output/{output_filename}"
     os.makedirs('output', exist_ok=True)
     wavfile.write(output_path, sr_base, mixed_signal)
-    print(f"Mixed file successfully created at: {output_path}")
+    print(f"Archivo mezclado creado exitosamente en: {output_path}")
 
 if __name__ == "__main__":
-    print("Effects and mixing module ready for the Zenergia ecosystem.")
+    print("Módulo de efectos listo para el ecosistema Zenergia.")

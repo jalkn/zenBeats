@@ -9,7 +9,8 @@ class AudioGenerator:
         Generates and saves a 3D structural representation of the action.
         """
         os.makedirs('output/3d', exist_ok=True)
-        filename = f"shape_{action_code}.txt"
+        # Cambiado el nombre del archivo a una estructura simple [Acción]Brick.txt
+        filename = f"{action_code}Brick.txt"
         filepath = os.path.join('output/3d', filename)
         
         shapes = {
@@ -17,7 +18,7 @@ class AudioGenerator:
   [===]             [===]
   |   \\           /   |
   |    \\         /    |
-  |     \\_______/     | (bio-Brick)
+  |     \\_______/     | (Hourglass horizontally)
   |     /       \\     |
   |    /         \\    |
   |   /           \\   |
@@ -27,11 +28,11 @@ class AudioGenerator:
                     ^
                    / \\
                   / * \\
-                 /=====\\ (bio-Pyramid)
+                 /=====\\ (Pyramid arrow up)
             """,
             'caminar': """
                     |\\
-                    | \\ > (bio-Pyramid)
+                    | \\ > (Pyramid arrow right)
                     | / >
                     |/
             """,
@@ -39,7 +40,7 @@ class AudioGenerator:
                  \\=====/ 
                   \\ * /
                    \\ /
-                    V (bio-Pyramid)
+                    V (Pyramid arrow down)
             """
         }
         
@@ -53,12 +54,15 @@ class AudioGenerator:
         print(shape_text)
 
     @staticmethod
-    def create_percussion(base_freq, filename, duration_seconds=5, sample_rate=44100):
+    def create_percussion(base_freq, action_code, duration_seconds=5, sample_rate=44100):
         """
         Generates a dense and punchy sub-bass percussion pulse of 5 seconds,
         simulating a tight and heavy heartbeat-like pulse.
         """
         os.makedirs('output/raw', exist_ok=True)
+        
+        # Actualizado para seguir la convención del usuario: Jbeat.wav, Fbeat.wav, etc.
+        filename = f"{action_code}beat.wav"
         
         num_samples = int(sample_rate * duration_seconds)
         t = np.linspace(0, duration_seconds, num_samples, endpoint=False)
@@ -79,4 +83,4 @@ class AudioGenerator:
         filepath = os.path.join('output/raw', filename)
         wavfile.write(filepath, sample_rate, wave_int)
         print(f"Secuencia percusiva generada exitosamente en: {filepath}")
-        return filepath
+        return filepath, filename
