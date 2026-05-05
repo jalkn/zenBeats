@@ -7,20 +7,28 @@ def load_frequencies():
     with open('config/frequencies.json', 'r') as f:
         return json.load(f)
 
-def get_action_data(letter, frequencies):
-    """Maps the letter to the specific action properties."""
+def get_action_data(letter_or_word, frequencies):
+    """
+    Maps an action letter or word to the proper action parameters.
+    Allows single letter ('J', 'U', 'W', 'F') or full Spanish action name.
+    """
     mapping = {
         'F': ('caer', 'caer'),
         'U': ('levantarse', 'levantarse'),
         'W': ('caminar', 'caminar'),
-        'J': ('saltar', 'saltar')
+        'J': ('saltar', 'saltar'),
+        'CAER': ('caer', 'caer'),
+        'LEVENTARSE': ('levantarse', 'levantarse'),
+        'LEVANTARSE': ('levantarse', 'levantarse'),
+        'CAMINAR': ('caminar', 'caminar'),
+        'SALTAR': ('saltar', 'saltar')
     }
     
-    letter = letter.upper()
-    if letter not in mapping:
-        raise ValueError(f"Unknown action code: {letter}")
+    key_input = letter_or_word.strip().upper()
+    if key_input not in mapping:
+        raise ValueError(f"Unknown action code: {key_input}")
     
-    key, label = mapping[letter]
+    key, label = mapping[key_input]
     return frequencies[key], label
 
 def main():
@@ -31,18 +39,19 @@ def main():
     frequencies = load_frequencies()
     gen = AudioGenerator()
     
-    # Changed to the expanded input prompt
-    workout_input = input("Por favor ingrese la secuencia de acciones (ej. saltar, levantarse, caminar, caer): ").strip().upper()
-    print(f"\nProcesando secuencia de Zenergia: {workout_input}")
+    user_input = input("Por favor ingrese la secuencia de acciones (ej. saltar, levantarse, caminar, caer): ").strip()
     
-    for char in workout_input:
+    sequence_elements = [x.strip() for x in user_input.replace(',', ' ').split() if x.strip()]
+    print(f"\nProcesando secuencia de Zenergia: {sequence_elements}")
+    
+    for item in sequence_elements:
         try:
-            f_data, action_key = get_action_data(char, frequencies)
+            f_data, action_key = get_action_data(item, frequencies)
+            action_code = f_data['action']
             
-            # Generate shape output
-            gen.print_3d_shape(action_key, char)
+            gen.print_3d_shape(action_key, action_code)
             
-            filename = f"action_{char}_{workout_input}.wav"
+            filename = f"action_{action_code}_{''.join([get_action_data(x, frequencies)[0]['action'] for x in sequence_elements])}.wav"
             gen.create_percussion(f_data['base_freq_hz'], filename, duration_seconds=10)
             
             base_path = f"output/raw/{filename}"
