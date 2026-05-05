@@ -1,26 +1,26 @@
 {
   "caer": {
+    "action": "F",
     "name": "Caer",
-    "base_freq_hz": 60,
-    "description": "Frecuencia de bombo profundo (sub-bass)",
-    "duration_seconds": 10
+    "shape": "pyramid arrow down",
+    "base_freq_hz": 110.0
   },
   "levantarse": {
+    "action": "U",
     "name": "Levantarse",
-    "base_freq_hz": 80,
-    "description": "Frecuencia de golpe de impacto",
-    "duration_seconds": 10
+    "shape": "pyramid arrow up",
+    "base_freq_hz": 220.0
   },
   "caminar": {
+    "action": "W",
     "name": "Caminar",
-    "base_freq_hz": 100,
-    "description": "Frecuencia media-baja de ritmo",
-    "duration_seconds": 10
+    "shape": "pyramid arrow right",
+    "base_freq_hz": 146.8
   },
   "saltar": {
+    "action": "J",
     "name": "Saltar",
-    "base_freq_hz": 120,
-    "description": "Frecuencia de expansión",
-    "duration_seconds": 10
+    "shape": "hourglass horizontally",
+    "base_freq_hz": 293.7
   }
 }
