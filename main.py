@@ -31,8 +31,8 @@ def main():
     frequencies = load_frequencies()
     gen = AudioGenerator()
     
-    # Changed prompt to Spanish but kept behavior
-    workout_input = input("Por favor ingrese la secuencia de acciones (ej. J, U, W, F): ").strip().upper()
+    # Changed to the expanded input prompt
+    workout_input = input("Por favor ingrese la secuencia de acciones (ej. saltar, levantarse, caminar, caer): ").strip().upper()
     print(f"\nProcesando secuencia de Zenergia: {workout_input}")
     
     for char in workout_input:

@@ -14,13 +14,14 @@ class AudioGenerator:
         
         shapes = {
             'saltar': """
-                 [=+=+=] (Hourglass)
-                  \\   /
-                   \\ /
-                    V
-                   / \\
-                  /   \\
-                 [=+=+=]
+  [===]             [===]
+  |   \\           /   |
+  |    \\         /    |
+  |     \\_______/     | (Hourglass horizontally)
+  |     /       \\     |
+  |    /         \\    |
+  |   /           \\   |
+  [===]             [===]
             """,
             'levantarse': """
                     ^
